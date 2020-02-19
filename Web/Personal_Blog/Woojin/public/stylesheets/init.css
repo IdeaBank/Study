@@ -1,0 +1,39 @@
+img {
+    display: none;
+}
+
+p {
+    text-align: justify;
+}
+
+a {
+    color: #0066B3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+h3 {
+    text-transform: uppercase;
+}
+
+body {
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+script,
+noscript {
+    display: none;
+}

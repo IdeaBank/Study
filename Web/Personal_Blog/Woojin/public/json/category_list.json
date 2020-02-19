@@ -1,0 +1,14 @@
+{
+    "category_list": [
+        {
+            "name": "개발",
+            "hidden": false,
+            "link": "development"
+        },
+        {
+            "name": "운동",
+            "hidden": false,
+            "link": "workout"
+        }
+    ]
+}

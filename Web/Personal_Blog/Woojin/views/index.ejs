@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/init.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <div class="header">
+        <a href="/">
+            <h1><%= title %></h1>
+        </a>
+        <div id="nav">
+            <% for(let i = 0; i < data[0].category_list.length; i++){ %>
+            <% if(data[0].category_list[i].hidden != true){ %>
+            <a href="/board/<%= data[0].category_list[i].link %>"><span
+                    class="category_name"><%= data[0].category_list[i].name %></span></a>
+            <% if(i != data[0].category_list.length - 1){ %>
+            <span> | </span>
+            <% } %>
+            <% } %>
+            <% } %>
+        </div>
+    </div>
+
+    <div id="contents">
+
+        <% for(let i = 0; i < data[1].articles.length; ++i) { %>
+
+        <div class="box">
+            <a href="/article/<%= data[1].articles[i].written %>">
+                <div class="content">
+                    <h2><%= data[1].articles[i].title %></h2>
+                    <% let temp = data[1].articles[i].written.toString() %>
+                    <span
+                        class="date"><%= temp.substring(0,4) + '-' + temp.substring(4,6) + '-' + temp.substring(6,8) %></span>
+                    <hr>
+                    <p><%= data[1].articles[i].content %></p>
+                </div>
+            </a>
+        </div>
+        <% } %>
+
+    </div>
+    <script type="text/javascript" src="/javascripts/nav.js"></script>
+</body>
+
+</html>
