@@ -24,7 +24,10 @@ router.get('/', function (req, res, next) {
 
     let data = new Array();
 
-    let raw_data = fs.readFileSync('./public/json/category_list.json');
+    let jsonPath = process.cwd() + '\\Woojin\\public\\json\\category_list.json';
+    let categoryPath = process.cwd() + '\\Woojin\\public\\json\\categories\\';
+
+    let raw_data = fs.readFileSync(jsonPath);
     let categories = JSON.parse(raw_data);
 
     data.push(categories);
@@ -33,7 +36,7 @@ router.get('/', function (req, res, next) {
 
     for (let i = 0; i < categories.category_list.length; ++i) {
 
-        raw_data = fs.readFileSync('./public/json/categories/' + categories.category_list[i].link + '/' + categories.category_list[i].link + '.json');
+        raw_data = fs.readFileSync(categoryPath + categories.category_list[i].link + '\\' + categories.category_list[i].link + '.json');
         let article_data = JSON.parse(raw_data);
 
         for (let j = 0; j < article_data.articles.length; ++j)
@@ -55,14 +58,17 @@ router.get('/board/:category_name', function (req, res, next) {
 
     let data = new Array();
 
-    let raw_data = fs.readFileSync('./public/json/category_list.json');
+    let jsonPath = process.cwd() + '\\Woojin\\public\\json\\category_list.json';
+    let categoryPath = process.cwd() + '\\Woojin\\public\\json\\categories\\';
+
+    let raw_data = fs.readFileSync(jsonPath);
     let categories = JSON.parse(raw_data);
 
     data.push(categories);
 
     data.push({ "articles": [] });
 
-    raw_data = fs.readFileSync('./public/json/categories/' + req.params.category_name + '/' + req.params.category_name + '.json');
+    raw_data = fs.readFileSync(categoryPath + req.params.category_name + '\\' + req.params.category_name + '.json');
     let article_data = JSON.parse(raw_data);
 
     for (let j = 0; j < article_data.articles.length; ++j)
@@ -79,10 +85,12 @@ router.get('/board/:category_name', function (req, res, next) {
 
 router.get('/article/:article_number', function (req, res, next) {
 
-
     let data = new Array();
 
-    let raw_data = fs.readFileSync('./public/json/category_list.json');
+    let jsonPath = process.cwd() + '\\Woojin\\public\\json\\category_list.json';
+    let categoryPath = process.cwd() + '\\Woojin\\public\\json\\categories\\';
+
+    let raw_data = fs.readFileSync(jsonPath);
     let categories = JSON.parse(raw_data);
 
     data.push(categories);
@@ -91,7 +99,7 @@ router.get('/article/:article_number', function (req, res, next) {
 
     for (let i = 0; i < categories.category_list.length; ++i) {
 
-        raw_data = fs.readFileSync('./public/json/categories/' + categories.category_list[i].link + '/' + categories.category_list[i].link + '.json');
+        raw_data = fs.readFileSync(categoryPath + categories.category_list[i].link + '\\' + categories.category_list[i].link + '.json');
         let article_data = JSON.parse(raw_data);
 
         for (let j = 0; j < article_data.articles.length; ++j)
